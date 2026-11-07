@@ -1,0 +1,5 @@
+﻿<Solution>
+  <Project Path="OpenXRSampleStarterAssets.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj" />
+</Solution>
