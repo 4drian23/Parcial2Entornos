@@ -8,27 +8,30 @@ public class Orbitador : MonoBehaviour
     [SerializeField] Transform target;
     [Tooltip("Velocidad de movimiento del objeto")]
     [SerializeField] float velocidad;
-    private Vector3 eje = Vector3.up; 
+    private Vector3 eje; 
 
     private string direccion;
+    private string altura;
     
 
     void LateUpdate()
     {
+        CambiarDireccecion();
         this.transform.RotateAround(target.position, eje, velocidad * Time.deltaTime);
     }
 
 
 
-    void CambiarDireccecion(int dir)
+    void CambiarDireccecion()
     {
+        int dir = Random.Range(1,3);
         switch (dir)
         {
             case 1:
-                direccion = "up"; // En sentido horario
+                eje = Vector3.up; // En sentido horario
                 break;
             case 2:
-                direccion = "left"; // En sentido contrahorario
+                eje = Vector3.left; // En sentido contrahorario
                 break;
         }
 
