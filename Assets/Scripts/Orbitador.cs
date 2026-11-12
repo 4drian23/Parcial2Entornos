@@ -67,7 +67,7 @@ public class Orbitador : MonoBehaviour
         {
             int numeroRandom = Random.Range(0,limite);
             SiguienteDestino = numeroRandom;
-            Debug.Log("Siguiente Destino: " + SiguienteDestino);
+            //Debug.Log("Siguiente Destino: " + SiguienteDestino);
         }
     }
 }
