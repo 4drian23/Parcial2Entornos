@@ -5,7 +5,7 @@ public class RecibirDaño : MonoBehaviour
     public DamageEffect damageEffect;
 
 
-    void OllisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (damageEffect != null)
         {
