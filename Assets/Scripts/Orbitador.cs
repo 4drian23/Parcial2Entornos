@@ -4,36 +4,73 @@ using UnityEngine;
 public class Orbitador : MonoBehaviour
 {
     [Header("SetUp")]
-    [Tooltip("Objeto a orbitar")]
-    [SerializeField] Transform target;
+
+    [Tooltip("Lista de destinos")]
+    [SerializeField] Transform [] wayPoints;
+
     [Tooltip("Velocidad de movimiento del objeto")]
-    [SerializeField] float velocidad;
-    private Vector3 eje; 
+    [SerializeField] float velocidadDeMov;
 
-    private string direccion;
-    private string altura;
-    
+    [Tooltip("Velocidad de rotación")]
+    [SerializeField] float velocidadDeRot;
 
-    void LateUpdate()
+    [Tooltip("Distancia Minima con el destino")]
+    [SerializeField] float distanciaMinima;
+
+    [Tooltip("Número límite para la generación de números random")]
+    [SerializeField] int limite;
+
+    [SerializeField] Transform  jugador;
+    private int SiguienteDestino;
+    private Vector3 direccionDeMov;
+  
+
+    void Update()
     {
-        CambiarDireccecion();
-        this.transform.RotateAround(target.position, eje, velocidad * Time.deltaTime);
+        //Verificamos que la lista tenga al menos un punto al que dirigirse;
+        if (wayPoints.Length == 0){return;}
+
+        Transform PuntoDestino = wayPoints[SiguienteDestino];
+        
+        Movimiento(PuntoDestino);
+        //Rotacion();
+        ActualizarSiguienteDestino(PuntoDestino);       
     }
 
 
-
-    void CambiarDireccecion()
+    private void Movimiento(Transform PuntoDestino)
     {
-        int dir = Random.Range(1,3);
-        switch (dir)
-        {
-            case 1:
-                eje = Vector3.up; // En sentido horario
-                break;
-            case 2:
-                eje = Vector3.left; // En sentido contrahorario
-                break;
-        }
+        //Calculamos la dirección a le se movera el objeto;
+        direccionDeMov = (PuntoDestino.position - this.transform.position).normalized;
 
+        //Movemos el objeto en la dirección obtenida;
+        this.transform.position += direccionDeMov * velocidadDeMov * Time.deltaTime;
+    }
+
+    private void Rotacion()
+    {
+        if (direccionDeMov != Vector3.zero)
+        {
+            //Rotamos el objeto para que mire en la dirección a la que se dirige;
+            //Quaternion direccionDeRotacion = Quaternion.LookRotation(jugador.position);
+
+            //Hacemos que la rotación sea mas suave;
+            //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, direccionDeRotacion, velocidadDeRot * Time.deltaTime);
+            this.transform.LookAt(jugador);
+        }
+    }
+
+    private void ActualizarSiguienteDestino(Transform PuntoDestino)
+    {
+        float distanciaActual = Vector3.Distance(this.transform.position, PuntoDestino.position);
+
+        //Si la distanciaActual es menor a la distanciaMinima significa que el objeto alcanzo el destino.
+        //Entonces debemos actualizar el siguiente punto.
+        if(distanciaActual < distanciaMinima)
+        {
+            int numeroRandom = Random.Range(0,limite);
+            SiguienteDestino = numeroRandom;
+            //Debug.Log("Siguiente Destino: " + SiguienteDestino);
+        }
     }
 }
