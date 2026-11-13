@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class RecibirDaño : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public DamageEffect damageEffect;
 
-    // Update is called once per frame
-    void Update()
+
+    void OllisionEnter(Collision collision)
     {
-        
+        if (damageEffect != null)
+        {
+            damageEffect.TakeDamageEffect();
+        }
     }
 }
