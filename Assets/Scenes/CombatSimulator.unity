@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4237d84e7fc473448bb40f0585311bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  proyectil: {fileID: 7280584343750350380, guid: 62be9fb7263852c4eac2c588fd7ab851, type: 3}
+  proyectil: {fileID: 3004913327132443340, guid: b34621d52c86460478a2f9bef6df10bb, type: 3}
   tiempoEntreDisparos: 0.1
 --- !u!1 &987483808
 GameObject:
@@ -3702,6 +3702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 900584614}
     m_Modifications:
+    - target: {fileID: 397230623728597221, guid: dbd45d79387a72546a906528063bbc43, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 268923101}
     - target: {fileID: 397230623728597221, guid: dbd45d79387a72546a906528063bbc43, type: 3}
       propertyPath: velocidadDeRot
       value: 10

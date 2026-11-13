@@ -19,6 +19,8 @@ public class Orbitador : MonoBehaviour
 
     [Tooltip("Número límite para la generación de números random")]
     [SerializeField] int limite;
+
+    [SerializeField] Transform  jugador;
     private int SiguienteDestino;
     private Vector3 direccionDeMov;
   
@@ -31,7 +33,7 @@ public class Orbitador : MonoBehaviour
         Transform PuntoDestino = wayPoints[SiguienteDestino];
         
         Movimiento(PuntoDestino);
-        Rotacion();
+        //Rotacion();
         ActualizarSiguienteDestino(PuntoDestino);       
     }
 
@@ -50,10 +52,11 @@ public class Orbitador : MonoBehaviour
         if (direccionDeMov != Vector3.zero)
         {
             //Rotamos el objeto para que mire en la dirección a la que se dirige;
-            Quaternion direccionDeRotacion = Quaternion.LookRotation(direccionDeMov);
+            //Quaternion direccionDeRotacion = Quaternion.LookRotation(jugador.position);
 
             //Hacemos que la rotación sea mas suave;
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, direccionDeRotacion, velocidadDeRot * Time.deltaTime);
+            //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, direccionDeRotacion, velocidadDeRot * Time.deltaTime);
+            this.transform.LookAt(jugador);
         }
     }
 

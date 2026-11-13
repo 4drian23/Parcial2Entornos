@@ -6,7 +6,7 @@ public class Proyectil : MonoBehaviour
 {
 
     [SerializeField] private float velocidadDeMov;
-    [SerializeField] private Transform jugador;
+    private Transform jugador;
     [SerializeField] private Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
