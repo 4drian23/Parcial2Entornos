@@ -711,6 +711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lightsabers
       objectReference: {fileID: 0}
+    - target: {fileID: 8618479362239888980, guid: 79992b4ffc73e114585459378268e250, type: 3}
+      propertyPath: m_SelectMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8653517718040585746, guid: 79992b4ffc73e114585459378268e250, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.07
