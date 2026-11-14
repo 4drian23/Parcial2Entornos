@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class RecibirDaño : MonoBehaviour
 {
-    public DamageEffect damageEffect;
+    [SerializeField] private EfectoDeDaño efecto;
 
 
     void OnCollisionEnter(Collision collision)
     {
-        if (damageEffect != null)
+        if (efecto != null)
         {
-            damageEffect.TakeDamageEffect();
+            efecto.TriggerDaño();
         }
     }
 }
