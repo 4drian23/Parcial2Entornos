@@ -6,6 +6,7 @@ public class DispararPlasma : MonoBehaviour
 {
 
     [SerializeField] private GameObject proyectil;
+    [SerializeField] private Transform cañon;
     [SerializeField] private float tiempoEntreDisparos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +20,7 @@ public class DispararPlasma : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(tiempoEntreDisparos);
-            Instantiate(proyectil, this.transform.position, Quaternion.identity);
+            Instantiate(proyectil, cañon.position, Quaternion.identity);
         }
 
     }
