@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8029628654444377157}
   - component: {fileID: 2693297110416538094}
   - component: {fileID: 5664274458876946707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProyectilPlasma
-  m_TagString: Untagged
+  m_TagString: proyectil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,9 +110,9 @@ GameObject:
   - component: {fileID: 551216031723634071}
   - component: {fileID: 3854923940118056069}
   - component: {fileID: 248195503946391042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plasma
-  m_TagString: Untagged
+  m_TagString: proyectil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
