@@ -6,9 +6,23 @@ public class DispararPlasma : MonoBehaviour
 {
 
     [SerializeField] private GameObject proyectil;
+    [SerializeField] private Transform cañon;
     [SerializeField] private float tiempoEntreDisparos;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool noDisparar;
+
+    void OnEnable()
+    {
+        ControlarDron.OnCajaSalio += EmpezarCoroutine;   
+        ControlarDron.OnCajaEntro += DetenerCoroutine;  
+        Debug.Log("Check");        
+    }
+    void OnDisable()
+    {
+        ControlarDron.OnCajaSalio -= EmpezarCoroutine;
+        ControlarDron.OnCajaEntro -= DetenerCoroutine;    
+    }
+
     void Start()
     {
         StartCoroutine(Disparar());
@@ -16,11 +30,22 @@ public class DispararPlasma : MonoBehaviour
 
     IEnumerator Disparar()
     {
-        while (true)
+        while (noDisparar == false)
         {
             yield return new WaitForSeconds(tiempoEntreDisparos);
-            Instantiate(proyectil, this.transform.position, Quaternion.identity);
+            Instantiate(proyectil, cañon.position, Quaternion.identity);
         }
+    }
 
+    private void DetenerCoroutine()
+    {
+        noDisparar = true;
+    }
+
+    private void EmpezarCoroutine()
+    {
+        noDisparar = false;
+        StartCoroutine(Disparar());
+        Debug.Log("Funcion 2 activada");
     }
 }

@@ -9,10 +9,9 @@ public class Proyectil : MonoBehaviour
     private Transform jugador;
     [SerializeField] private Rigidbody rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        jugador = FindAnyObjectByType<XROrigin>().transform;
+        jugador = FindAnyObjectByType<XROrigin>().transform.GetChild(1).transform;
         LanzarProyectil();
     }
 
