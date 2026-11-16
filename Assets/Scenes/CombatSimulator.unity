@@ -961,7 +961,7 @@ MonoBehaviour:
   fuerzaDeAtraccion: 500
   fuerzaDeEmpuje: 0
   rangoDeAtraccion: 25
-  radioDeAtraccion: 4
+  radioDeAtraccion: 5
   zonaDeAtraccion: {fileID: 950031096}
   triggerAction: {fileID: 2526168894431210536, guid: 1635490aa68143442b5322b29b340c59, type: 3}
   gripAction: {fileID: -1289947363739713011, guid: 1635490aa68143442b5322b29b340c59, type: 3}
@@ -6690,7 +6690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
