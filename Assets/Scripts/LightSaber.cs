@@ -26,7 +26,7 @@ public class LightSaber : MonoBehaviour
 
  public void DesactivarSable()
     {
-        particulasDeLaHoja.Stop();
+        particulasDeLaHoja.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
         collider.gameObject.SetActive(false);
     }
 
