@@ -6,6 +6,7 @@ public class UsarFuerza : MonoBehaviour
 {
     [Header("Configuración Básica")]
     [SerializeField] private Camera camara;
+    [SerializeField] private Transform manoIzq;
     [SerializeField] private Transform zonaDeAtraccion;
     [SerializeField] private LayerMask capasignoradas;
     [SerializeField] private bool usandoLaFuerza;

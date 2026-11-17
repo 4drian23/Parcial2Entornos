@@ -14,13 +14,13 @@ public class DispararPlasma : MonoBehaviour
 
     void OnEnable()
     {
-        ControlarDron.OnCajaSalio += EmpezarCoroutine;   
-        ControlarDron.OnCajaEntro += DetenerCoroutine;        
+        ControlarDron.OnDronesActivados += EmpezarCoroutine;   
+        ControlarDron.OnDronesDesactivados += DetenerCoroutine;        
     }
     void OnDisable()
     {
-        ControlarDron.OnCajaSalio -= EmpezarCoroutine;
-        ControlarDron.OnCajaEntro -= DetenerCoroutine;    
+        ControlarDron.OnDronesActivados -= EmpezarCoroutine;
+        ControlarDron.OnDronesDesactivados -= DetenerCoroutine;    
     }
 
     void Start()

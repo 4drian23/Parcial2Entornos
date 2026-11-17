@@ -11,6 +11,8 @@ public class LightSaber : MonoBehaviour
     [SerializeField] private ParticleSystem chispas;
     [Tooltip("Referencia del collider de la hoja")]
     [SerializeField] private Collider collider;
+    [Tooltip("Referencia de la posicion del socket")]
+    [SerializeField] private Transform inicialPos;
 
     void Start()
     {
@@ -32,13 +34,16 @@ public class LightSaber : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     { 
-
         if (collision.gameObject.CompareTag("Hangar"))
         {
             Debug.Log("Choco con " + collision.gameObject.name); 
         }
         chispas.Play();   
         Debug.Log("Choco con " + collision.gameObject.name); 
-        
+    }
+
+    public void ResetPos()
+    {
+        this.transform.position = inicialPos.position;
     }
 }
