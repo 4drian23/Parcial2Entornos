@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8029628654444377157}
   - component: {fileID: 2693297110416538094}
   - component: {fileID: 5664274458876946707}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: ProyectilPlasma
   m_TagString: proyectil
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a074e8c6804d7f546a15538d52d2f82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Proyectil
-  velocidadDeMov: 9
+  velocidadDeMov: 10
   rb: {fileID: 2693297110416538094}
 --- !u!54 &2693297110416538094
 Rigidbody:
@@ -96,9 +96,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 3
+  m_Height: 3.4968112
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1.31}
+  m_Center: {x: 0, y: 0, z: 1.3042237}
 --- !u!1 &8405563269921469560
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 551216031723634071}
   - component: {fileID: 3854923940118056069}
   - component: {fileID: 248195503946391042}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Plasma
   m_TagString: proyectil
   m_Icon: {fileID: 0}

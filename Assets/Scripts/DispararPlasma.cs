@@ -1,10 +1,11 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class DispararPlasma : MonoBehaviour
 {
-
+    [Header("Configuración")]
     [SerializeField] private GameObject proyectil;
     [SerializeField] private Transform cañon;
     [SerializeField] private float tiempoEntreDisparos;
@@ -14,8 +15,7 @@ public class DispararPlasma : MonoBehaviour
     void OnEnable()
     {
         ControlarDron.OnCajaSalio += EmpezarCoroutine;   
-        ControlarDron.OnCajaEntro += DetenerCoroutine;  
-        Debug.Log("Check");        
+        ControlarDron.OnCajaEntro += DetenerCoroutine;        
     }
     void OnDisable()
     {
@@ -46,6 +46,5 @@ public class DispararPlasma : MonoBehaviour
     {
         noDisparar = false;
         StartCoroutine(Disparar());
-        Debug.Log("Funcion 2 activada");
     }
 }
