@@ -11,6 +11,7 @@ public class UsarFuerza : MonoBehaviour
     [SerializeField] private Transform zonaDeAtraccion;
     [SerializeField] private InputActionReference triggerAction;
     [SerializeField] private InputActionReference gripAction;
+    [SerializeField] private InputActionReference primaryButtonAction;
     [SerializeField] private LayerMask capasignoradas;
     private int ignorarCapas;
 
@@ -24,12 +25,15 @@ public class UsarFuerza : MonoBehaviour
     {
         if(triggerAction != null) triggerAction.action.Enable();
         if(gripAction != null) gripAction.action.Enable();
+        if(primaryButtonAction != null) primaryButtonAction.action.Enable();
+        
     }
 
     void OnDisable()
     {
         if(triggerAction != null) triggerAction.action.Disable();
         if(gripAction != null) gripAction.action.Disable();
+        if(primaryButtonAction != null) primaryButtonAction.action.Disable();
     }
 
     void Start()
@@ -40,11 +44,15 @@ public class UsarFuerza : MonoBehaviour
     void Update()
     {
         //Pulsar boton - Grip (Recolectar Objetos)
-        if (gripAction.action.WasPressedThisFrame())
+        if (primaryButtonAction.action.IsInProgress())
         {
             usandoLaFuerza = true;
             RecolectarObjetos();
             Debug.Log("gripAction pulsado");
+        }
+        else
+        {
+            if(objetosDisponibles != null) LimpiarLista();
         }
 
         //Mantener boton - Grip (Atraer Objetos)
@@ -61,7 +69,6 @@ public class UsarFuerza : MonoBehaviour
 
     private void RecolectarObjetos()
     {
-        objetosDisponibles = null;
 
         RaycastHit hit;
 
@@ -73,6 +80,14 @@ public class UsarFuerza : MonoBehaviour
             Debug.DrawLine(camara.transform.position, hit.point, Color.green);
 
             objetosDisponibles = Physics.OverlapSphere(hit.point, radioDeAtraccion, ignorarCapas);
+
+            foreach(Collider col in objetosDisponibles)
+            {
+                if (col.attachedRigidbody)
+                {
+                    col.gameObject.GetComponent<Outline>().enabled = true;
+                }
+            }
         }
         else
         {
@@ -107,5 +122,18 @@ public class UsarFuerza : MonoBehaviour
             // Dibuja la esfera sólida o solo el contorno (WireSphere)
             Gizmos.DrawWireSphere(puntoDeImpacto, radioDeAtraccion);
         }
+    }
+
+    private void LimpiarLista()
+    {
+        foreach(Collider col in objetosDisponibles)
+            {
+                if (col.attachedRigidbody)
+                {
+                    col.gameObject.GetComponent<Outline>().enabled = false;
+                }
+            }
+        
+        objetosDisponibles = null;
     }
 }
