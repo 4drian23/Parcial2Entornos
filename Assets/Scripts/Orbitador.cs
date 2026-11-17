@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Orbitador : MonoBehaviour
 {
-    [Header("SetUp")]
+    [Header("Configuración")]
 
     [Tooltip("Lista de destinos")]
     [SerializeField] Transform [] wayPoints;
@@ -19,11 +19,12 @@ public class Orbitador : MonoBehaviour
 
     [Tooltip("Número límite para la generación de números random")]
     [SerializeField] int limite;
-
+    [Header("Referencias")]
     [SerializeField] Transform  jugador;
+    [SerializeField] Camera camara;
     private int SiguienteDestino;
     private Vector3 direccionDeMov;
-  
+
 
     void Update()
     {
@@ -33,14 +34,13 @@ public class Orbitador : MonoBehaviour
         Transform PuntoDestino = wayPoints[SiguienteDestino];
         
         Movimiento(PuntoDestino);
-        //Rotacion();
+        Rotacion();
         ActualizarSiguienteDestino(PuntoDestino);       
     }
 
-
     private void Movimiento(Transform PuntoDestino)
     {
-        //Calculamos la dirección a le se movera el objeto;
+        //Calculamos la dirección a la que se movera el objeto;
         direccionDeMov = (PuntoDestino.position - this.transform.position).normalized;
 
         //Movemos el objeto en la dirección obtenida;
@@ -51,12 +51,7 @@ public class Orbitador : MonoBehaviour
     {
         if (direccionDeMov != Vector3.zero)
         {
-            //Rotamos el objeto para que mire en la dirección a la que se dirige;
-            //Quaternion direccionDeRotacion = Quaternion.LookRotation(jugador.position);
-
-            //Hacemos que la rotación sea mas suave;
-            //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, direccionDeRotacion, velocidadDeRot * Time.deltaTime);
-            this.transform.LookAt(jugador);
+            this.transform.LookAt(camara.transform);
         }
     }
 
@@ -73,4 +68,5 @@ public class Orbitador : MonoBehaviour
             //Debug.Log("Siguiente Destino: " + SiguienteDestino);
         }
     }
+
 }

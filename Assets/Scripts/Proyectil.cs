@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Proyectil : MonoBehaviour
 {
-
+    [Header("Configuración")]
     [SerializeField] private float velocidadDeMov;
-    private Transform jugador;
     [SerializeField] private Rigidbody rb;
+    private Transform jugador;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class Proyectil : MonoBehaviour
 
     void Update()
     {
-        float destroyDelay = 2f;
+        float destroyDelay = 5f;
         Destroy(this.gameObject, destroyDelay);
     }
     private void LanzarProyectil()

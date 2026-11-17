@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - proyectil
+  - SkyboxCamera
+  - sable
+  - Hangar
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - SableDeLuz
   - Objetos
   - NoAgarrables
-  - 
-  - 
+  - Proyectiles
+  - Mesa
   - 
   - 
   - 

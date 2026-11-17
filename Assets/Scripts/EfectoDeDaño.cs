@@ -15,13 +15,16 @@ public class EfectoDeDaño : MonoBehaviour, ITunnelingVignetteProvider
 
     public void TriggerDaño()
     {
+        Debug.Log("TriggerDaño");
         if(viñetaDelEfecto == null){return;}
+        Debug.Log("ViñetaON");
         StopAllCoroutines(); //Para reiniciar el efecto si el jugador es impactado varias veces de forma consecutiva;
         StartCoroutine(RutinaDeDaño());
     }
 
     private IEnumerator RutinaDeDaño()
     {
+        Debug.Log("RutinaON");
         viñetaDelEfecto.BeginTunnelingVignette(this);
 
         yield return new WaitForSeconds(duracionDelEfecto);

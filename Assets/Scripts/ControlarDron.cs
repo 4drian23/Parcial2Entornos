@@ -15,7 +15,7 @@ public class ControlarDron : MonoBehaviour
         if(other == cajaVerde)
         {
             OnCajaEntro?.Invoke();
-            Debug.Log("Señal 1 enviada");
+            //Debug.Log("Señal 1 enviada");
         }
     }
 
@@ -24,7 +24,7 @@ public class ControlarDron : MonoBehaviour
         if(other == cajaVerde)
         {
             OnCajaSalio?.Invoke();
-            Debug.Log("Señal 2 enviada");
+            //Debug.Log("Señal 2 enviada");
         }
     }
 

@@ -9,7 +9,7 @@ public class LightSaber : MonoBehaviour
     [SerializeField] private ParticleSystem particulasDeLaHoja;
     [Tooltip("Referencia del sistema de particulas de las chispas")]
     [SerializeField] private ParticleSystem chispas;
-     [Tooltip("Referencia del collider de la hoja")]
+    [Tooltip("Referencia del collider de la hoja")]
     [SerializeField] private Collider collider;
 
     void Start()
@@ -24,15 +24,21 @@ public class LightSaber : MonoBehaviour
         collider.gameObject.SetActive(true);
     }
 
- public void DesactivarSable()
+    public void DesactivarSable()
     {
         particulasDeLaHoja.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
         collider.gameObject.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
-    {
+    { 
+
+        if (collision.gameObject.CompareTag("Hangar"))
+        {
+            Debug.Log("Choco con " + collision.gameObject.name); 
+        }
         chispas.Play();   
-        Debug.Log("Choco con " + collision.gameObject.name);   
+        Debug.Log("Choco con " + collision.gameObject.name); 
+        
     }
 }
