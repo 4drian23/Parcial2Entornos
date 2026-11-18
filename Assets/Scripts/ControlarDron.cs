@@ -8,6 +8,11 @@ public class ControlarDron : MonoBehaviour
     public static event Action OnDronesActivados;
     public static event Action OnDronesDesactivados;
 
+    void Start()
+    {
+        DesactivarDron();
+    }
+
     public void ActivarDron()
     {
         OnDronesActivados?.Invoke();
