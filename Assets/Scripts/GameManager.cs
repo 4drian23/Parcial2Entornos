@@ -16,12 +16,4 @@ public class GameManager : MonoBehaviour
             objetosAgarrables[i].enabled = false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
 }

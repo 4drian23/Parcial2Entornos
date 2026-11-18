@@ -6,6 +6,7 @@ public class UsarFuerza : MonoBehaviour
 {
     [Header("Configuración Básica")]
     [SerializeField] private Camera camara;
+    [SerializeField] private Transform manoIzq;
     [SerializeField] private Transform zonaDeAtraccion;
     [SerializeField] private LayerMask capasignoradas;
     [SerializeField] private bool usandoLaFuerza;
@@ -99,7 +100,7 @@ public class UsarFuerza : MonoBehaviour
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(camara.transform.position, camara.transform.TransformDirection(Vector3.forward), out hit, rangoDeAtraccion, ignorarCapas))
+        if(Physics.Raycast(manoIzq.transform.position, manoIzq.transform.TransformDirection(Vector3.forward), out hit, rangoDeAtraccion, ignorarCapas))
         {
             ////////////////////////////////////////////////////////////
             huboImpacto = true;
@@ -134,7 +135,7 @@ public class UsarFuerza : MonoBehaviour
             {
                 if (col.attachedRigidbody)
                 {
-                    col.attachedRigidbody.AddForce(camara.transform.TransformDirection(Vector3.forward) * fuerzaDeEmpuje, ForceMode.Impulse);
+                    col.attachedRigidbody.AddForce(manoIzq.transform.TransformDirection(Vector3.forward) * fuerzaDeEmpuje, ForceMode.Impulse);
                 }
             }
             Debug.Log("arrojar objetos llamado");    

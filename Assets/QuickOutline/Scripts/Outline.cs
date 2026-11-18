@@ -80,6 +80,7 @@ public class Outline : MonoBehaviour {
 
   private bool needsUpdate;
 
+  private Color colorBase;
   void Awake() {
 
     // Cache renderers
@@ -100,6 +101,7 @@ public class Outline : MonoBehaviour {
   }
 
   void OnEnable() {
+    colorBase = OutlineColor;
     foreach (var renderer in renderers) {
 
       // Append outline shaders
@@ -304,6 +306,22 @@ public class Outline : MonoBehaviour {
         outlineFillMaterial.SetFloat("_ZTest", (float)UnityEngine.Rendering.CompareFunction.Greater);
         outlineFillMaterial.SetFloat("_OutlineWidth", 0f);
         break;
+    }
+  }
+
+
+  //////////////////////////////////////
+  
+  public void SetColor(bool activado)
+  {
+    if(activado == true)
+    {
+      this.OutlineColor = Color.magenta;
+      this.OutlineWidth = 5f;
+    }
+    else
+    {
+      this.outlineColor = colorBase;
     }
   }
 }

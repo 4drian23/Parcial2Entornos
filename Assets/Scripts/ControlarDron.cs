@@ -5,27 +5,24 @@ using System;
 
 public class ControlarDron : MonoBehaviour
 {
-    [SerializeField] Collider cajaVerde;
+    public static event Action OnDronesActivados;
+    public static event Action OnDronesDesactivados;
 
-    public static event Action OnCajaSalio;
-    public static event Action OnCajaEntro;
-
-     void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if(other == cajaVerde)
-        {
-            OnCajaEntro?.Invoke();
-            //Debug.Log("Señal 1 enviada");
-        }
+        DesactivarDron();
     }
 
-    void OnTriggerExit(Collider other)
+    public void ActivarDron()
     {
-        if(other == cajaVerde)
-        {
-            OnCajaSalio?.Invoke();
-            //Debug.Log("Señal 2 enviada");
-        }
+        OnDronesActivados?.Invoke();
+        //Debug.Log("Señal 1 enviada");
+    }
+
+    public void DesactivarDron()
+    {
+        OnDronesDesactivados?.Invoke();
+        //Debug.Log("Señal 2 enviada");
     }
 
 }

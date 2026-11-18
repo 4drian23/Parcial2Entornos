@@ -25,6 +25,19 @@ public class Orbitador : MonoBehaviour
     private int SiguienteDestino;
     private Vector3 direccionDeMov;
 
+    private bool seMueve = true;
+
+
+    void OnEnable()
+    {
+        ControlarDron.OnDronesActivados += ActivarMovimiento;
+        ControlarDron.OnDronesDesactivados += DetenerMovimiento;
+    }
+    void OnDisable()
+    {
+        ControlarDron.OnDronesActivados -= ActivarMovimiento;
+        ControlarDron.OnDronesDesactivados -= DetenerMovimiento;
+    }
 
     void Update()
     {
@@ -33,9 +46,14 @@ public class Orbitador : MonoBehaviour
 
         Transform PuntoDestino = wayPoints[SiguienteDestino];
         
-        Movimiento(PuntoDestino);
-        Rotacion();
-        ActualizarSiguienteDestino(PuntoDestino);       
+        if(seMueve == true)
+        {
+            Debug.Log("Es verdadero");
+            Movimiento(PuntoDestino);
+            Rotacion();
+            ActualizarSiguienteDestino(PuntoDestino);
+        }
+               
     }
 
     private void Movimiento(Transform PuntoDestino)
@@ -67,6 +85,16 @@ public class Orbitador : MonoBehaviour
             SiguienteDestino = numeroRandom;
             //Debug.Log("Siguiente Destino: " + SiguienteDestino);
         }
+    }
+
+    private void DetenerMovimiento()
+    {
+        seMueve = false;
+    }
+
+    private void ActivarMovimiento()
+    {
+        seMueve = true;
     }
 
 }
